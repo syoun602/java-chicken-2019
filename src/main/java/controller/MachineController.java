@@ -24,10 +24,9 @@ public class MachineController {
 
     private boolean processInput(int input) {
         if (input == 1) {
-            return true;
+            OrderController.getInstance().run();
         }
         if (input == 2) {
-            return true;
         }
         return !(input == 3);
     }
