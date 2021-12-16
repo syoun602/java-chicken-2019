@@ -40,10 +40,14 @@ public class InputValidator {
                 .orElseThrow(() -> new IllegalArgumentException(ERROR_MESSAGE + INVALID_MENU_NUMBER + RETRY_MESSAGE));
     }
 
+    public static void validateQuantity(String input) {
+        isNumber(input);
+    }
 
     private static void isNumber(String input) {
         if (!input.chars().allMatch(Character::isDigit)) {
             throw new IllegalArgumentException(ERROR_MESSAGE + NOT_A_NUMBER_MESSAGE + RETRY_MESSAGE);
         }
     }
+
 }

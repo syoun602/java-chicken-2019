@@ -24,6 +24,7 @@ public class OrderController {
     public void run() {
         int tableNumber = inputTable();
         int menuNumber = inputMenus();
+        int quantity = inputQuantity();
 
     }
 
@@ -50,6 +51,19 @@ public class OrderController {
                 OutputView.printMenus(menus);
                 input = InputView.inputMenuNumber();
                 InputValidator.validateMenuNumber(menus, input);
+                return Integer.parseInt(input);
+            } catch (IllegalArgumentException e) {
+                OutputView.printErrorMessage(e);
+            }
+        }
+    }
+
+    private int inputQuantity() {
+        String input;
+        while (true) {
+            try {
+                input = InputView.inputQuantity();
+                InputValidator.validateQuantity(input);
                 return Integer.parseInt(input);
             } catch (IllegalArgumentException e) {
                 OutputView.printErrorMessage(e);

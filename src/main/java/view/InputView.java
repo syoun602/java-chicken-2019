@@ -20,4 +20,9 @@ public class InputView {
         System.out.println(NEW_LINE + "## 등록할 메뉴를 선택하세요.");
         return scanner.nextLine();
     }
+
+    public static String inputQuantity() {
+        System.out.println(NEW_LINE + "## 메뉴의 수량을 입력하세요.");
+        return scanner.nextLine();
+    }
 }
