@@ -1,5 +1,7 @@
 package service;
 
+import domain.Menu;
+import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
 
@@ -11,4 +13,7 @@ public class OrderService {
     }
 
 
+    public List<Menu> getMenus() {
+        return MenuRepository.menus();
+    }
 }

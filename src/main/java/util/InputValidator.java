@@ -1,5 +1,7 @@
 package util;
 
+import domain.Menu;
+import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
 
@@ -12,6 +14,8 @@ public class InputValidator {
     private static final String RETRY_MESSAGE = " 다시 시도해 주세요";
     private static final String MAIN_SCREEN_INPUT_FORMAT = "[123]";
     private static final String INVALID_TABLE_NUMBER = "존재하지 않는 테이블입니다.";
+    private static final String INVALID_MENU_NUMBER = "존재하지 않는 메뉴입니다.";
+    private static final String NOT_A_NUMBER_MESSAGE = "숫자만 입력해주세요.";
 
     public static void validateModeInput(String input) {
         if (!input.matches(MAIN_SCREEN_INPUT_FORMAT)) {
@@ -20,9 +24,26 @@ public class InputValidator {
     }
 
     public static void validateTableNumber(List<Table> tables, String input) {
+        isNumber(input);
         tables.stream()
                 .filter(table -> table.toString().equals(input))
                 .findAny()
                 .orElseThrow(() -> new IllegalArgumentException(ERROR_MESSAGE + INVALID_TABLE_NUMBER + RETRY_MESSAGE));
+    }
+
+    public static void validateMenuNumber(List<Menu> menus, String input) {
+        isNumber(input);
+        menus.stream()
+                .map(MenuRepository::getNumber)
+                .filter(menu -> menu == Integer.parseInt(input))
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException(ERROR_MESSAGE + INVALID_MENU_NUMBER + RETRY_MESSAGE));
+    }
+
+
+    private static void isNumber(String input) {
+        if (!input.chars().allMatch(Character::isDigit)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE + NOT_A_NUMBER_MESSAGE + RETRY_MESSAGE);
+        }
     }
 }
