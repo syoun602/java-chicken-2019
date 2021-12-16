@@ -1,5 +1,6 @@
 package controller;
 
+import domain.Table;
 import service.PaymentService;
 import view.OutputView;
 
@@ -18,7 +19,8 @@ public class PaymentController {
     public void run() {
         int tableNumber = inputTable();
         try {
-            paymentService.payTable(tableNumber);
+            Table table = paymentService.checkPayment(tableNumber);
+
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e);
         }

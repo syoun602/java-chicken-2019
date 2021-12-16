@@ -14,15 +14,12 @@ public class PaymentService {
         return instance;
     }
 
-    public void payTable(int tableNumber) {
+    public Table checkPayment(int tableNumber) {
         Table table = TableRepository.findByNumber(tableNumber);
-        checkIsPayed(table);
-
-    }
-
-    private void checkIsPayed(Table table) {
         if (TableRepository.checkIsPayed(table)) {
             throw new IllegalArgumentException(NO_REMAINING_ORDER);
         }
+        return table;
     }
+
 }
