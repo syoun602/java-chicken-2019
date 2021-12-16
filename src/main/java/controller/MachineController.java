@@ -13,6 +13,6 @@ public class MachineController {
     }
 
     public void initMachine() {
-        OutputView.printMain();
+        OutputView.printMainScreen();
     }
 }
