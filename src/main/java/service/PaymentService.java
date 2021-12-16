@@ -28,6 +28,7 @@ public class PaymentService {
     public int makePayment(Table table, String payMode) {
         List<Order> orderList = OrderRepository.getOrders();
         int priceToPay = PaymentRepository.getTotalPrice(table, orderList) - calculateDiscount(table, orderList);
+        PaymentRepository.updateIsPayed(table);
 
         if (payMode.equals(CASH)) {
             return (int) (priceToPay * 0.95);

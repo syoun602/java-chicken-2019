@@ -29,7 +29,7 @@ public class TableRepository {
 
     public static void updateIsPayed(Table table) {
         if (table.getIsPayed()) {
-            table.setIsPayed(false);
+            table.toggleIsPayed();
         }
     }
 

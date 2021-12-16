@@ -25,4 +25,8 @@ public class Table {
     public void setIsPayed(boolean isPayed) {
         this.isPayed = false;
     }
+
+    public void toggleIsPayed() {
+        isPayed = !isPayed;
+    }
 }
