@@ -3,7 +3,7 @@ package domain;
 public class Order {
     private final Table table;
     private final Menu menu;
-    private final int quantity;
+    private int quantity;
 
     public Order(Table table, Menu menu, int quantity) {
         this.table = table;
@@ -21,5 +21,9 @@ public class Order {
 
     public int getQuantity() {
         return quantity;
+    }
+
+    public void addQuantity(int quantity) {
+        this.quantity += quantity;
     }
 }

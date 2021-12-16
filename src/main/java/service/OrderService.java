@@ -30,9 +30,15 @@ public class OrderService {
         checkQuantity(quantity);
         Table table = TableRepository.findByNumber(tableNumber);
         Menu menu = MenuRepository.findByNumber(menuNumber);
+        Order order = OrderRepository.findByTableAndMenu(table, menu);
+        if (order != null) {
+            OrderRepository.updateOrder(order, quantity);
+            return;
+        }
         OrderRepository.saveOrder(table, menu, quantity);
         TableRepository.orderRegistered(table);
     }
+
 
     private void checkQuantity(int quantity) {
         if (quantity > MAX_MENU_SIZE) {
