@@ -1,9 +1,9 @@
 package domain;
 
 public class Order {
-    private Table table;
-    private Menu menu;
-    private int quantity;
+    private final Table table;
+    private final Menu menu;
+    private final int quantity;
 
     public Order(Table table, Menu menu, int quantity) {
         this.table = table;

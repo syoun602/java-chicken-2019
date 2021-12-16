@@ -1,11 +1,8 @@
 package controller;
 
-import domain.Table;
 import util.InputValidator;
 import view.InputView;
 import view.OutputView;
-
-import java.util.List;
 
 public class MachineController {
     private static MachineController instance;

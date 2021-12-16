@@ -12,6 +12,7 @@ public class InputView {
         System.out.println(SELECT_MODE);
         return scanner.nextLine();
     }
+
     public static String inputTableNumber() {
         System.out.println(NEW_LINE + "## 주문할 테이블을 선택하세요.");
         return scanner.nextLine();
