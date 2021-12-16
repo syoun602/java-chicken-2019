@@ -32,4 +32,8 @@ public class TableRepository {
             table.setIsPayed(false);
         }
     }
+
+    public static boolean checkIsPayed(Table table) {
+        return table.getIsPayed();
+    }
 }

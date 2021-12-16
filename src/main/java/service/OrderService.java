@@ -9,6 +9,15 @@ public class OrderService {
     private static final String ERROR_MESSAGE = "[ERROR] ";
     private static final String INVALID_QUANTITY_MESSAGE = "한 테이블에서 주문할 수 있는 한 메뉴의 최대 수량은 99개 이하입니다.";
 
+    private static OrderService instance;
+
+    public static OrderService getInstance() {
+        if (instance == null) {
+            instance = new OrderService();
+        }
+        return instance;
+    }
+
     public List<Table> getTables() {
         return TableRepository.tables();
     }

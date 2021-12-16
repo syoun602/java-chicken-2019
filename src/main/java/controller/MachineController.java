@@ -1,8 +1,11 @@
 package controller;
 
+import domain.Table;
 import util.InputValidator;
 import view.InputView;
 import view.OutputView;
+
+import java.util.List;
 
 public class MachineController {
     private static MachineController instance;
@@ -27,6 +30,7 @@ public class MachineController {
             OrderController.getInstance().run();
         }
         if (input == 2) {
+            PaymentController.getInstance().run();
         }
         return !(input == 3);
     }
