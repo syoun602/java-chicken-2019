@@ -19,7 +19,7 @@ public class InputValidator {
 
     public static void validateModeInput(String input) {
         if (!input.matches(MAIN_SCREEN_INPUT_FORMAT)) {
-            throw new IllegalArgumentException(NEW_LINE + ERROR_MESSAGE + INVALID_INPUT_MESSAGE + RETRY_MESSAGE);
+            throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_INPUT_MESSAGE + RETRY_MESSAGE);
         }
     }
 

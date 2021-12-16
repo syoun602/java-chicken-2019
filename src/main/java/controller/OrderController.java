@@ -25,15 +25,15 @@ public class OrderController {
         int tableNumber = inputTable();
         int menuNumber = inputMenus();
         int quantity = inputQuantity();
-
+        saveMenuToTable(tableNumber, menuNumber, quantity);
     }
 
     private int inputTable() {
         String input;
         List<Table> tables = orderService.getTables();
+        OutputView.printTables(tables);
         while (true) {
             try {
-                OutputView.printTables(tables);
                 input = InputView.inputTableNumber();
                 InputValidator.validateTableNumber(tables, input);
                 return Integer.parseInt(input);
@@ -46,9 +46,9 @@ public class OrderController {
     private int inputMenus() {
         String input;
         List<Menu> menus = orderService.getMenus();
+        OutputView.printMenus(menus);
         while (true) {
             try {
-                OutputView.printMenus(menus);
                 input = InputView.inputMenuNumber();
                 InputValidator.validateMenuNumber(menus, input);
                 return Integer.parseInt(input);
@@ -68,6 +68,14 @@ public class OrderController {
             } catch (IllegalArgumentException e) {
                 OutputView.printErrorMessage(e);
             }
+        }
+    }
+
+    private void saveMenuToTable(int tableNumber, int menuNumber, int quantity) {
+        try {
+            orderService.saveOrder(tableNumber, menuNumber, quantity);
+        } catch (IllegalArgumentException e) {
+            OutputView.printErrorMessage(e);
         }
     }
 }

@@ -19,4 +19,17 @@ public class TableRepository {
     public static List<Table> tables() {
         return Collections.unmodifiableList(tables);
     }
+
+    public static Table findByNumber(int tableNumber) {
+        return tables.stream()
+                .filter(table -> table.getNumber() == tableNumber)
+                .findAny()
+                .orElse(null);
+    }
+
+    public static void updateIsPayed(Table table) {
+        if (table.getIsPayed()) {
+            table.setIsPayed(false);
+        }
+    }
 }

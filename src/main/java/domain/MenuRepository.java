@@ -25,4 +25,11 @@ public class MenuRepository {
     public static int getNumber(Menu menu) {
         return menu.getNumber();
     }
+
+    public static Menu findByNumber(int menuNumber) {
+        return menus.stream()
+                .filter(menu -> menu.getNumber() == menuNumber)
+                .findAny()
+                .orElse(null);
+    }
 }

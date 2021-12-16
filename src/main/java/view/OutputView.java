@@ -9,6 +9,7 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
+    private static final String NOT_PAYED_BOTTOM_LINE = "└ ₩ ┘";
     private static final String NEW_LINE = "\n";
     private static final String MAIN_PROMPT = "## 메인화면\n" + "1 - 주문등록\n" + "2 - 결제하기\n" + "3 - 프로그램 종료\n";
 
@@ -21,7 +22,7 @@ public class OutputView {
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-        printLine(BOTTOM_LINE, size);
+        printBottomLine(tables);
     }
 
     public static void printMenus(final List<Menu> menus) {
@@ -33,6 +34,17 @@ public class OutputView {
     private static void printLine(final String line, final int count) {
         for (int index = 0; index < count; index++) {
             System.out.print(line);
+        }
+        System.out.println();
+    }
+
+    private static void printBottomLine(final List<Table> tables) {
+        for (final Table table : tables) {
+            if (!table.getIsPayed()) {
+                System.out.print(NOT_PAYED_BOTTOM_LINE);
+                continue;
+            }
+            System.out.print(BOTTOM_LINE);
         }
         System.out.println();
     }
