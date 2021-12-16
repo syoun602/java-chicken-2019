@@ -14,4 +14,8 @@ public class OrderRepository {
     public static List<Order> getOrders() {
         return orders;
     }
+
+    public static void deleteOrder(Table table) {
+        orders.removeIf(order -> order.getTable().equals(table));
+    }
 }

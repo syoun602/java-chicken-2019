@@ -31,8 +31,7 @@ public class OrderService {
         Table table = TableRepository.findByNumber(tableNumber);
         Menu menu = MenuRepository.findByNumber(menuNumber);
         OrderRepository.saveOrder(table, menu, quantity);
-        TableRepository.updateIsPayed(table);
-        System.out.println("상태 : " + tableNumber + " " + table.getIsPayed());
+        TableRepository.orderRegistered(table);
     }
 
     private void checkQuantity(int quantity) {

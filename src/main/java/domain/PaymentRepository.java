@@ -19,10 +19,4 @@ public class PaymentRepository {
                 .mapToInt(Order::getQuantity)
                 .sum();
     }
-
-    public static void updateIsPayed(Table table) {
-        if (!table.getIsPayed()) {
-            table.toggleIsPayed();
-        }
-    }
 }

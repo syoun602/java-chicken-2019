@@ -27,8 +27,14 @@ public class TableRepository {
                 .orElse(null);
     }
 
-    public static void updateIsPayed(Table table) {
+    public static void orderRegistered(Table table) {
         if (table.getIsPayed()) {
+            table.toggleIsPayed();
+        }
+    }
+
+    public static void orderPayed(Table table) {
+        if (!table.getIsPayed()) {
             table.toggleIsPayed();
         }
     }

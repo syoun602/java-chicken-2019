@@ -29,4 +29,8 @@ public class Menu {
     public Category getCategory() {
         return category;
     }
+
+    public String getName() {
+        return name;
+    }
 }
