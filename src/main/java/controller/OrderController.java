@@ -1,7 +1,6 @@
 package controller;
 
 import domain.Menu;
-import domain.Table;
 import service.OrderService;
 import util.InputValidator;
 import view.InputView;
@@ -16,7 +15,7 @@ public class OrderController {
     public static OrderController getInstance() {
         if (instance == null) {
             instance = new OrderController();
-            orderService = new OrderService();
+            orderService = OrderService.getInstance();
         }
         return instance;
     }
@@ -29,18 +28,7 @@ public class OrderController {
     }
 
     private int inputTable() {
-        String input;
-        List<Table> tables = orderService.getTables();
-        OutputView.printTables(tables);
-        while (true) {
-            try {
-                input = InputView.inputTableNumber();
-                InputValidator.validateTableNumber(tables, input);
-                return Integer.parseInt(input);
-            } catch (IllegalArgumentException e) {
-                OutputView.printErrorMessage(e);
-            }
-        }
+        return TableController.inputTableNumber();
     }
 
     private int inputMenus() {
