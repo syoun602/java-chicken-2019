@@ -11,7 +11,10 @@ public class OutputView {
     private static final String BOTTOM_LINE = "└ ─ ┘";
     private static final String NOT_PAYED_BOTTOM_LINE = "└ ₩ ┘";
     private static final String NEW_LINE = "\n";
+    private static final String HEADLINE = "## ";
     private static final String MAIN_PROMPT = "## 메인화면\n" + "1 - 주문등록\n" + "2 - 결제하기\n" + "3 - 프로그램 종료\n";
+    private static final String PROCESSING_PAYMENT_MESSAGE = "번 테이블의 결제를 진행합니다.\n";
+    private static final String AMOUNT_TO_PAY = "## 최종 결제할 금액\n";
 
     public static void printMainScreen() {
         System.out.println(NEW_LINE + MAIN_PROMPT);
@@ -56,7 +59,15 @@ public class OutputView {
         System.out.println();
     }
 
+    public static void printPaymentProcessingMessage(int tableNumber) {
+        System.out.println(HEADLINE + tableNumber + PROCESSING_PAYMENT_MESSAGE);
+    }
+
     public static void printErrorMessage(IllegalArgumentException e) {
         System.out.println(NEW_LINE + e.getMessage());
+    }
+
+    public static void printPayment(int totalPayment) {
+        System.out.println(AMOUNT_TO_PAY + totalPayment);
     }
 }

@@ -2,6 +2,8 @@ package controller;
 
 import domain.Table;
 import service.PaymentService;
+import util.InputValidator;
+import view.InputView;
 import view.OutputView;
 
 public class PaymentController {
@@ -20,7 +22,11 @@ public class PaymentController {
         int tableNumber = inputTable();
         try {
             Table table = paymentService.checkPayment(tableNumber);
-
+            OutputView.printPaymentProcessingMessage(tableNumber);
+            String payMode = InputView.inputPayMode();
+            InputValidator.validatePayModeInput(payMode);
+            int totalPayment = paymentService.makePayment(table, payMode);
+            OutputView.printPayment(totalPayment);
         } catch (IllegalArgumentException e) {
             OutputView.printErrorMessage(e);
         }

@@ -16,6 +16,7 @@ public class InputValidator {
     private static final String INVALID_TABLE_NUMBER = "존재하지 않는 테이블입니다.";
     private static final String INVALID_MENU_NUMBER = "존재하지 않는 메뉴입니다.";
     private static final String NOT_A_NUMBER_MESSAGE = "숫자만 입력해주세요.";
+    private static final String PAY_MODE_FORMAT = "[12]";
 
     public static void validateModeInput(String input) {
         if (!input.matches(MAIN_SCREEN_INPUT_FORMAT)) {
@@ -50,4 +51,9 @@ public class InputValidator {
         }
     }
 
+    public static void validatePayModeInput(String input) {
+        if (!input.matches(PAY_MODE_FORMAT)) {
+            throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_INPUT_MESSAGE);
+        }
+    }
 }

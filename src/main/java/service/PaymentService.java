@@ -1,10 +1,13 @@
 package service;
 
-import domain.Table;
-import domain.TableRepository;
+import domain.*;
+
+import java.util.List;
 
 public class PaymentService {
     private static final String NO_REMAINING_ORDER = "주문내역이 존재하지 않습니다.";
+    private static final int DEFAULT_VALUE = 0;
+    private static final String CASH = "2";
     private static PaymentService instance;
 
     public static PaymentService getInstance() {
@@ -22,4 +25,17 @@ public class PaymentService {
         return table;
     }
 
+    public int makePayment(Table table, String payMode) {
+        List<Order> orderList = OrderRepository.getOrders();
+        int priceToPay = PaymentRepository.getTotalPrice(table, orderList) - calculateDiscount(table, orderList);
+
+        if (payMode.equals(CASH)) {
+            return (int) (priceToPay * 0.95);
+        }
+        return priceToPay;
+    }
+
+    private int calculateDiscount(Table table, List<Order> orderList) {
+        return 10000 * (PaymentRepository.getTotalChickens(table, orderList) / 10);
+    }
 }

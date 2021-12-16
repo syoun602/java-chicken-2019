@@ -10,4 +10,8 @@ public class OrderRepository {
         Order order = new Order(table, menu, quantity);
         orders.add(order);
     }
+
+    public static List<Order> getOrders() {
+        return orders;
+    }
 }
