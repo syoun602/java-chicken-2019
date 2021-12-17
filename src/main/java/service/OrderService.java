@@ -26,10 +26,10 @@ public class OrderService {
     }
 
     public void saveOrder(int tableNumber, int menuNumber, int quantity) {
-        checkQuantity(quantity);
         Table table = TableRepository.findByNumber(tableNumber);
         Menu menu = MenuRepository.findByNumber(menuNumber);
         Order order = OrderRepository.findByTableAndMenu(table, menu);
+        checkQuantity(table, menu, quantity);
         if (order != null) {
             OrderRepository.updateOrder(order, quantity);
             return;
@@ -38,9 +38,9 @@ public class OrderService {
         TableRepository.orderRegistered(table);
     }
 
-
-    private void checkQuantity(int quantity) {
-        if (quantity > MAX_MENU_SIZE) {
+    private void checkQuantity(Table table, Menu menu, int quantity) {
+        int quantityByTableAndMenu = OrderRepository.findQuantityByTableAndMenu(table, menu);
+        if (quantity + quantityByTableAndMenu > MAX_MENU_SIZE) {
             throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_QUANTITY_MESSAGE);
         }
     }

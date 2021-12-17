@@ -41,4 +41,12 @@ public class OrderRepository {
                 .filter(order -> order.getTable().equals(table))
                 .collect(Collectors.toList());
     }
+
+    public static int findQuantityByTableAndMenu(Table table, Menu menu) {
+        return orders.stream()
+                .filter(order -> order.getTable().equals(table))
+                .filter(order -> order.getMenu().equals(menu))
+                .mapToInt(Order::getQuantity)
+                .findAny().orElse(0);
+    }
 }
