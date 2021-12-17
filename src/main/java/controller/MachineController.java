@@ -5,6 +5,10 @@ import view.InputView;
 import view.OutputView;
 
 public class MachineController {
+    private static final int ORDER_MODE = 1;
+    private static final int PAYMENT_MODE = 2;
+    private static final int EXIT_MODE = 3;
+
     private static MachineController instance;
 
     public static MachineController getInstance() {
@@ -23,13 +27,13 @@ public class MachineController {
     }
 
     private boolean processInput(int input) {
-        if (input == 1) {
+        if (input == ORDER_MODE) {
             OrderController.getInstance().run();
         }
-        if (input == 2) {
+        if (input == PAYMENT_MODE) {
             PaymentController.getInstance().run();
         }
-        return !(input == 3);
+        return !(input == EXIT_MODE);
     }
 
     private int mainScreenInput() {

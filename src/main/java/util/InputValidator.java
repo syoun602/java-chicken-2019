@@ -7,7 +7,6 @@ import domain.Table;
 import java.util.List;
 
 public class InputValidator {
-    private static final String NEW_LINE = "\n";
     private static final String ERROR_MESSAGE = "[ERROR] ";
     private static final String INVALID_INPUT_MESSAGE = "선택할 수 없는 기능입니다.";
     private static final String RETRY_MESSAGE = " 다시 시도해 주세요";

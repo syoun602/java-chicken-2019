@@ -41,7 +41,7 @@ public class TableRepository {
         }
     }
 
-    public static boolean checkIsPayed(Table table) {
+    public static boolean isPayed(Table table) {
         return table.getIsPayed();
     }
 }
