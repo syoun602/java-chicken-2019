@@ -1,9 +1,8 @@
 package util;
 
 import domain.Menu;
-import domain.MenuRepository;
+import repository.MenuRepository;
 import domain.Table;
-import domain.TableRepository;
 
 import java.util.List;
 

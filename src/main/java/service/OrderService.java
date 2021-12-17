@@ -1,6 +1,9 @@
 package service;
 
 import domain.*;
+import repository.MenuRepository;
+import repository.OrderRepository;
+import repository.TableRepository;
 
 import java.util.List;
 

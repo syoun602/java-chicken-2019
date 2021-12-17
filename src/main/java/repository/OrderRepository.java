@@ -1,4 +1,8 @@
-package domain;
+package repository;
+
+import domain.Menu;
+import domain.Order;
+import domain.Table;
 
 import java.util.ArrayList;
 import java.util.List;

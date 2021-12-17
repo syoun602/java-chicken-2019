@@ -1,4 +1,7 @@
-package domain;
+package repository;
+
+import domain.Order;
+import domain.Table;
 
 import java.util.List;
 

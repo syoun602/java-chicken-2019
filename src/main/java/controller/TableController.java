@@ -1,7 +1,7 @@
 package controller;
 
 import domain.Table;
-import domain.TableRepository;
+import repository.TableRepository;
 import util.InputValidator;
 import view.InputView;
 import view.OutputView;
