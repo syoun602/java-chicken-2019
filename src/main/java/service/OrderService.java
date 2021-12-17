@@ -30,6 +30,10 @@ public class OrderService {
         Menu menu = MenuRepository.findByNumber(menuNumber);
         Order order = OrderRepository.findByTableAndMenu(table, menu);
         checkQuantity(table, menu, quantity);
+        saveOrUpdateOrder(table, menu, order, quantity);
+    }
+
+    private void saveOrUpdateOrder(Table table, Menu menu, Order order, int quantity) {
         if (order != null) {
             OrderRepository.updateOrder(order, quantity);
             return;
