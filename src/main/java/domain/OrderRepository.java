@@ -2,6 +2,7 @@ package domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OrderRepository {
     private static final List<Order> orders = new ArrayList<>();
@@ -29,5 +30,11 @@ public class OrderRepository {
 
     public static void updateOrder(Order order, int quantity) {
         order.addQuantity(quantity);
+    }
+
+    public static List<Order> getOrdersByTable(Table table) {
+        return orders.stream()
+                .filter(order -> order.getTable().equals(table))
+                .collect(Collectors.toList());
     }
 }

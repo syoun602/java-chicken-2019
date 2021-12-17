@@ -1,6 +1,7 @@
 package view;
 
 import domain.Menu;
+import domain.Order;
 import domain.Table;
 
 import java.util.List;
@@ -15,6 +16,8 @@ public class OutputView {
     private static final String MAIN_PROMPT = "## 메인화면\n" + "1 - 주문등록\n" + "2 - 결제하기\n" + "3 - 프로그램 종료\n";
     private static final String PROCESSING_PAYMENT_MESSAGE = "번 테이블의 결제를 진행합니다.\n";
     private static final String AMOUNT_TO_PAY = "## 최종 결제할 금액\n";
+    private static final String ORDER_CONTENT = "## 주문 내역";
+    private static final String SPLIT_BY_SPACE = " ";
 
     public static void printMainScreen() {
         System.out.println(NEW_LINE + MAIN_PROMPT);
@@ -69,5 +72,11 @@ public class OutputView {
 
     public static void printPayment(int totalPayment) {
         System.out.println(AMOUNT_TO_PAY + totalPayment);
+    }
+
+    public static void printOrders(List<Order> orders) {
+        System.out.println(ORDER_CONTENT);
+        orders.forEach(order -> System.out.println(order.getMenu().getName() + SPLIT_BY_SPACE +
+                    order.getQuantity() + SPLIT_BY_SPACE + order.getMenu().getPrice()));
     }
 }

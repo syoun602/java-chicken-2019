@@ -1,10 +1,13 @@
 package controller;
 
+import domain.Order;
 import domain.Table;
 import service.PaymentService;
 import util.InputValidator;
 import view.InputView;
 import view.OutputView;
+
+import java.util.List;
 
 public class PaymentController {
     private static PaymentController instance;
@@ -22,6 +25,8 @@ public class PaymentController {
         int tableNumber = inputTable();
         try {
             Table table = paymentService.checkPayment(tableNumber);
+            List<Order> tableOrders = paymentService.getOrdersByTable(table);
+            OutputView.printOrders(tableOrders);
             OutputView.printPaymentProcessingMessage(tableNumber);
             String payMode = InputView.inputPayMode();
             InputValidator.validatePayModeInput(payMode);

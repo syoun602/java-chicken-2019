@@ -40,4 +40,8 @@ public class PaymentService {
     private int calculateDiscount(Table table, List<Order> orderList) {
         return 10000 * (PaymentRepository.getTotalChickens(table, orderList) / 10);
     }
+
+    public List<Order> getOrdersByTable(Table table) {
+        return OrderRepository.getOrdersByTable(table);
+    }
 }
