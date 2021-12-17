@@ -13,12 +13,10 @@ public class PaymentService {
     private static final int DISCOUNT_PRICE = 10000;
     private static final int DISCOUNT_QUANTITY = 10;
     private static PaymentService instance;
-    private static TableService tableService;
 
     public static PaymentService getInstance() {
         if (instance == null) {
             instance = new PaymentService();
-            tableService = TableService.getInstance();
         }
         return instance;
     }
@@ -37,9 +35,5 @@ public class PaymentService {
 
     private int calculateDiscount(Table table, List<Order> orderList) {
         return DISCOUNT_PRICE * (PaymentRepository.getTotalChickens(table, orderList) / DISCOUNT_QUANTITY);
-    }
-
-    public List<Order> getOrdersByTable(Table table) {
-        return OrderRepository.getOrdersByTable(table);
     }
 }

@@ -62,8 +62,8 @@ public class OutputView {
         System.out.println();
     }
 
-    public static void printPaymentProcessingMessage(int tableNumber) {
-        System.out.println(HEADLINE + tableNumber + PROCESSING_PAYMENT_MESSAGE);
+    public static void printPaymentProcessingMessage(Table table) {
+        System.out.println(HEADLINE + table.getNumber() + PROCESSING_PAYMENT_MESSAGE);
     }
 
     public static void printErrorMessage(IllegalArgumentException e) {

@@ -48,4 +48,8 @@ public class OrderService {
             throw new IllegalArgumentException(ERROR_MESSAGE + INVALID_QUANTITY_MESSAGE);
         }
     }
+
+    public List<Order> getOrdersByTable(Table table) {
+        return OrderRepository.getOrdersByTable(table);
+    }
 }
