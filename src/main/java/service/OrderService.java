@@ -18,10 +18,6 @@ public class OrderService {
         return instance;
     }
 
-    public List<Table> getTables() {
-        return TableRepository.tables();
-    }
-
     public List<Menu> getMenus() {
         return MenuRepository.menus();
     }

@@ -22,10 +22,6 @@ public class Table {
         return isPayed;
     }
 
-    public void setIsPayed(boolean isPayed) {
-        this.isPayed = false;
-    }
-
     public void toggleIsPayed() {
         isPayed = !isPayed;
     }
